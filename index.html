@@ -65,11 +65,49 @@
     .field:focus { outline: none; border-color: #A8294E; box-shadow: 0 0 0 3px rgba(168,41,78,.08); }
     .field::placeholder { color: #C0B8B0; }
 
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      direction: rtl;
+    }
+    .consent input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border: 2px solid #C0B8B0;
+      border-radius: 3px;
+      background: #fff;
+      cursor: pointer;
+      margin-top: 2px;
+      transition: background .15s, border-color .15s;
+      position: relative;
+    }
+    .consent input[type="checkbox"]:checked {
+      background: #E8641E;
+      border-color: #E8641E;
+    }
+    .consent input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 2px; right: 4px;
+      width: 5px; height: 9px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg) scaleX(-1);
+    }
+    .consent-label { font-size: 12px; color: #888; line-height: 1.5; }
+
     .btn {
       width: 100%;
       display: block;
       padding: 15px;
-      background: #A8294E;
+      background: #E8641E;
       color: #fff;
       font-family: 'Assistant', sans-serif;
       font-size: 17px;
@@ -79,8 +117,9 @@
       cursor: pointer;
       transition: background .2s;
       margin-top: 4px;
+      letter-spacing: 0.02em;
     }
-    .btn:hover { background: #8B1F3F; }
+    .btn:hover { background: #C9541A; }
 
     .fine { font-size: 11px; color: #C0B8B0; text-align: center; margin-top: 14px; }
 
@@ -105,7 +144,11 @@
     <form id="signup" action="RAVMESSER_ACTION_URL" method="post" onsubmit="return handleSubmit(event)">
       <input class="field" type="text" name="name" placeholder="השם שלך כאן" required>
       <input class="field" type="email" name="email" placeholder="המייל הטוב ביותר שלך" required>
-      <button class="btn" type="submit">שלחי לי את החוברת למייל 💜</button>
+      <label class="consent">
+        <input type="checkbox" required>
+        <span class="consent-label">אני מאשרת קבלת תוכן, מתכונים וטיפים מנטע ליבנה. ניתן להסיר בכל עת.</span>
+      </label>
+      <button class="btn" type="submit">שלחי לי את החוברת למייל</button>
     </form>
     <p class="fine">ללא ספאם. ביטול בכל עת. הפרטים שלך בטוחים.</p>
   </div>
