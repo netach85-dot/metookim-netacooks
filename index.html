@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חוברת מתכונים מתוקים - נטע ליבנה</title>
+  <meta name="description" content="הורדי חינם את חוברת המתכונים המתוקים הבריאים של נטע ליבנה, דיאטנית קלינית. בלי לספור קלוריות ובלי רגשות אשם.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: #FBF9F6;
+      font-family: 'Assistant', sans-serif;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* ═══ LAYOUT ═══ */
+    .page {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Content — RIGHT side */
+    .content {
+      flex: 0 0 480px;
+      width: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 52px;
+      background: #FBF9F6;
+    }
+
+    /* Image — LEFT side */
+    .photo {
+      flex: 1;
+      background-image: url('https://netacooks.co.il/wp-content/uploads/2026/06/kadourei-dubai.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+    }
+
+    /* ═══ TYPOGRAPHY ═══ */
+    .pre-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #A8294E;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #1A1A1A;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .body-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: #5A5A5A;
+      margin-bottom: 32px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    /* ═══ FORM ═══ */
+    .form-area {
+      width: 100%;
+    }
+
+    .form-area input[type="text"],
+    .form-area input[type="email"],
+    .form-area input[type="tel"] {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-family: 'Assistant', sans-serif;
+      background: #fff;
+      border: 1.5px solid #D8D2CA;
+      border-radius: 4px;
+      color: #1A1A1A;
+      margin-bottom: 10px;
+      direction: rtl;
+      text-align: right;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      display: block;
+    }
+
+    .form-area input[type="text"]:focus,
+    .form-area input[type="email"]:focus {
+      outline: none;
+      border-color: #A8294E;
+      box-shadow: 0 0 0 3px rgba(168,41,78,0.08);
+    }
+
+    .form-area input[type="text"]::placeholder,
+    .form-area input[type="email"]::placeholder { color: #BDB5AD; }
+
+    .form-area input[type="submit"],
+    .form-area button[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background: #A8294E;
+      color: #fff;
+      font-family: 'Assistant', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: block;
+      margin-top: 4px;
+      -webkit-appearance: none;
+    }
+
+    .form-area input[type="submit"]:hover,
+    .form-area button[type="submit"]:hover {
+      background: #8B1F3F;
+    }
+
+    /* Hide Rav Messer's own header/image/title */
+    .form-area h1, .form-area h2, .form-area h3,
+    .form-area img:not(.keep),
+    .form-area [class*="header"],
+    .form-area [class*="image"],
+    .form-area [class*="logo"],
+    .form-area [class*="banner"],
+    .form-area [class*="title"] { display: none !important; }
+
+    .form-area > div,
+    .form-area form {
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+
+    .privacy {
+      font-size: 11px;
+      color: #BDB5AD;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* ═══ MOBILE ═══ */
+    @media (max-width: 768px) {
+      .page { flex-direction: column; }
+      .photo {
+        flex: none;
+        min-height: 55vw;
+        height: 55vw;
+        order: -1;
+      }
+      .content {
+        flex: none;
+        width: 100%;
+        padding: 36px 24px 52px;
+      }
+      h1 { font-size: 28px; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .content { flex: 0 0 420px; width: 420px; padding: 48px 36px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- RIGHT: Content + Form -->
+  <div class="content">
+    <p class="pre-label">ספר דיגיטלי במתנה לחברות הבלוג:</p>
+    <h1>בלי לספור קלוריות<br>ובלי רגשות אשם</h1>
+    <p class="body-text">
+      הורדי עכשיו את חוברת המתכונים המתוקים והבריאים של הדיאטנית הקלינית נטע ליבנה,
+      שיעזרו לך לרדת במשקל בלי לוותר על הקפה של אחה"צ.
+    </p>
+    <p class="form-label">הזיני פרטים ואשלח לך מיידית:</p>
+    <div class="form-area">
+      <script type='text/javascript' src='//form2.ravpage.co.il/0af7891c8a15481ddeda40b0d84760bc6984899E' charset='UTF-8'></script>
+    </div>
+    <p class="privacy">ללא ספאם. ביטול בכל עת. הפרטים שלך בטוחים.</p>
+  </div>
+
+  <!-- LEFT: Photo -->
+  <div class="photo"></div>
+
+</div>
+
+</body>
+</html>
