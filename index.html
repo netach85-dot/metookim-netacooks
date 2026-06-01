@@ -81,83 +81,87 @@
       margin-bottom: 12px;
     }
 
-    /* ══ FORM ══ */
-    form { width: 100%; max-width: 380px; }
+    /* ══ RAV MESSER FORM OVERRIDE ══ */
+    #rm-wrap { width: 100%; max-width: 380px; direction: rtl; }
 
-    .field {
-      width: 100%;
-      display: block;
-      padding: 14px 18px;
-      font-size: 15px;
-      font-family: 'Assistant', sans-serif;
-      background: #fff;
-      border: 1.5px solid #E2DDD8;
-      border-radius: 6px;
-      color: #1A1A1A;
-      margin-bottom: 10px;
-      direction: rtl;
-      text-align: right;
-      -webkit-appearance: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .field:focus {
-      outline: none;
-      border-color: #A8294E;
-      box-shadow: 0 0 0 3px rgba(168,41,78,.07);
-    }
-    .field::placeholder { color: #C8C0B8; }
+    /* Hide Rav Messer's own title/image */
+    #rm-wrap h1, #rm-wrap h2, #rm-wrap h3,
+    #rm-wrap img, #rm-wrap [class*="title"],
+    #rm-wrap [class*="header"], #rm-wrap [class*="image"],
+    #rm-wrap [class*="logo"], #rm-wrap [class*="banner"] { display: none !important; }
 
-    .consent {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 16px;
-      cursor: pointer;
-      direction: rtl;
-      text-align: right;
+    /* Remove wrapper padding */
+    #rm-wrap > div, #rm-wrap form {
+      padding: 0 !important; margin: 0 !important;
+      background: transparent !important;
+      border: none !important; box-shadow: none !important;
+      max-width: 100% !important; width: 100% !important;
     }
-    .consent input[type="checkbox"] {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 18px; height: 18px; min-width: 18px;
-      border: 2px solid #C8C0B8;
-      border-radius: 4px;
-      background: #fff;
-      cursor: pointer;
-      margin-top: 2px;
-      transition: background .15s, border-color .15s;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .consent input[type="checkbox"]:checked { background: #A8294E; border-color: #A8294E; }
-    .consent input[type="checkbox"]:checked::after {
-      content: '';
-      position: absolute;
-      top: 2px; right: 4px;
-      width: 5px; height: 9px;
-      border: 2px solid #fff;
-      border-top: none; border-right: none;
-      transform: rotate(-45deg) scaleX(-1);
-    }
-    .consent-label { font-size: 12px; color: #999; line-height: 1.55; }
 
-    .btn {
-      width: 100%;
-      display: block;
-      padding: 16px;
-      background: #A8294E;
-      color: #fff;
-      font-family: 'Assistant', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      transition: background .2s, transform .1s;
-      -webkit-appearance: none;
+    /* Input fields */
+    #rm-wrap input[type="text"],
+    #rm-wrap input[type="email"],
+    #rm-wrap input[type="tel"] {
+      width: 100% !important; display: block !important;
+      padding: 14px 18px !important;
+      font-size: 15px !important;
+      font-family: 'Assistant', sans-serif !important;
+      background: #fff !important;
+      border: 1.5px solid #E2DDD8 !important;
+      border-radius: 6px !important;
+      color: #1A1A1A !important;
+      margin-bottom: 10px !important;
+      direction: rtl !important; text-align: right !important;
+      -webkit-appearance: none !important;
+      box-sizing: border-box !important;
     }
-    .btn:hover { background: #8B1F3F; transform: translateY(-1px); }
+    #rm-wrap input[type="text"]:focus,
+    #rm-wrap input[type="email"]:focus {
+      outline: none !important;
+      border-color: #A8294E !important;
+      box-shadow: 0 0 0 3px rgba(168,41,78,.07) !important;
+    }
+
+    /* Checkbox */
+    #rm-wrap input[type="checkbox"] {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      width: 18px !important; height: 18px !important;
+      min-width: 18px !important;
+      border: 2px solid #C8C0B8 !important;
+      border-radius: 4px !important;
+      background: #fff !important;
+      cursor: pointer !important;
+      transition: background .15s !important;
+      position: relative !important;
+      flex-shrink: 0 !important;
+    }
+    #rm-wrap input[type="checkbox"]:checked {
+      background: #A8294E !important;
+      border-color: #A8294E !important;
+    }
+
+    /* Submit button */
+    #rm-wrap input[type="submit"],
+    #rm-wrap button[type="submit"],
+    #rm-wrap button.submit,
+    #rm-wrap [class*="submit"] {
+      width: 100% !important; display: block !important;
+      padding: 16px !important;
+      background: #A8294E !important;
+      color: #fff !important;
+      font-family: 'Assistant', sans-serif !important;
+      font-size: 17px !important; font-weight: 700 !important;
+      border: none !important; border-radius: 6px !important;
+      cursor: pointer !important;
+      letter-spacing: 0.02em !important;
+      -webkit-appearance: none !important;
+      margin-top: 4px !important;
+    }
+    #rm-wrap input[type="submit"]:hover,
+    #rm-wrap button[type="submit"]:hover {
+      background: #8B1F3F !important;
+    }
 
     .fine {
       font-size: 11px;
@@ -211,15 +215,9 @@
     <h1>בלי לספור קלוריות<br>ובלי רגשות אשם</h1>
     <p class="sub">בלי תפריטים ובלי חוקים נוקשים. פשוט מתכונים מתוקים ובריאים שיסגרו לך את הפינה של אחה&quot;צ ויעזרו לך לרדת במשקל.</p>
     <p class="form-lbl">הזיני פרטים ואשלח לך מיידית:</p>
-    <form id="signup" action="RAVMESSER_ACTION_URL" method="post" onsubmit="return handleSubmit(event)">
-      <input class="field" type="text" name="name" placeholder="השם שלך כאן" required>
-      <input class="field" type="email" name="email" placeholder="המייל הטוב ביותר שלך" required>
-      <label class="consent">
-        <input type="checkbox" required>
-        <span class="consent-label">אני מאשרת קבלת תוכן, מתכונים וטיפים מנטע ליבנה. ניתן להסיר בכל עת.</span>
-      </label>
-      <button class="btn" type="submit">שלחי לי את החוברת למייל</button>
-    </form>
+    <div id="rm-wrap">
+      <script type='text/javascript' src='//form2.ravpage.co.il/0af7891c8a15481ddeda40b0d84760bc6984899E' charset='UTF-8'></script>
+    </div>
     <p class="fine">ללא ספאם. ביטול בכל עת. הפרטים שלך בטוחים.</p>
   </div>
 
