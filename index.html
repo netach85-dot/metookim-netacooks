@@ -8,9 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #FBF9F6; }
+    html, body { width: 100%; min-height: 100%; background: #FBF9F6; }
 
-    /* ══ DESKTOP: 50/50 split ══ */
+    /* ══ DESKTOP ══ */
     .page {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -19,25 +19,36 @@
       direction: rtl;
     }
 
-    /* RIGHT: content */
+    /* RIGHT: content — centered */
     .panel-content {
       background: #FBF9F6;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 72px 60px 72px 48px;
+      align-items: center;
+      text-align: center;
+      padding: 72px 52px;
       min-height: 100vh;
     }
 
-    /* LEFT: image */
+    /* LEFT: image — full, not cropped */
     .panel-image {
-      background-image: url('https://netacooks.co.il/wp-content/uploads/2026/06/mockup-hero.jpg');
-      background-size: cover;
-      background-position: center top;
+      background: #f0ece6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-height: 100vh;
+      overflow: hidden;
+    }
+    .panel-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
-    /* ══ TYPOGRAPHY ══ */
+    /* ══ TEXT ══ */
     .pre {
       font-size: 12px;
       font-weight: 700;
@@ -46,7 +57,6 @@
       color: #A8294E;
       margin-bottom: 20px;
     }
-
     h1 {
       font-size: 52px;
       font-weight: 900;
@@ -54,16 +64,16 @@
       color: #1A1A1A;
       letter-spacing: -0.03em;
       margin-bottom: 22px;
+      max-width: 480px;
     }
-
     .sub {
       font-size: 17px;
       font-weight: 300;
       line-height: 1.85;
       color: #5A5A5A;
       margin-bottom: 36px;
+      max-width: 420px;
     }
-
     .form-lbl {
       font-size: 12px;
       font-weight: 600;
@@ -72,6 +82,8 @@
     }
 
     /* ══ FORM ══ */
+    form { width: 100%; max-width: 380px; }
+
     .field {
       width: 100%;
       display: block;
@@ -95,7 +107,6 @@
     }
     .field::placeholder { color: #C8C0B8; }
 
-    /* Consent */
     .consent {
       display: flex;
       align-items: flex-start;
@@ -103,12 +114,12 @@
       margin-bottom: 16px;
       cursor: pointer;
       direction: rtl;
+      text-align: right;
     }
     .consent input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 18px; height: 18px;
-      min-width: 18px;
+      width: 18px; height: 18px; min-width: 18px;
       border: 2px solid #C8C0B8;
       border-radius: 4px;
       background: #fff;
@@ -118,23 +129,18 @@
       position: relative;
       flex-shrink: 0;
     }
-    .consent input[type="checkbox"]:checked {
-      background: #A8294E;
-      border-color: #A8294E;
-    }
+    .consent input[type="checkbox"]:checked { background: #A8294E; border-color: #A8294E; }
     .consent input[type="checkbox"]:checked::after {
       content: '';
       position: absolute;
       top: 2px; right: 4px;
       width: 5px; height: 9px;
       border: 2px solid #fff;
-      border-top: none;
-      border-right: none;
+      border-top: none; border-right: none;
       transform: rotate(-45deg) scaleX(-1);
     }
     .consent-label { font-size: 12px; color: #999; line-height: 1.55; }
 
-    /* CTA */
     .btn {
       width: 100%;
       display: block;
@@ -152,40 +158,46 @@
       -webkit-appearance: none;
     }
     .btn:hover { background: #8B1F3F; transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
 
     .fine {
       font-size: 11px;
       color: #C8C0B8;
       text-align: center;
       margin-top: 14px;
+      max-width: 380px;
     }
 
     /* ══ MOBILE ══ */
     @media (max-width: 720px) {
-      body { overflow-x: hidden; }
       .page {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
         min-height: auto;
       }
+      /* Image FIRST on mobile */
       .panel-image {
-        min-height: 72vw;
-        height: 72vw;
-        order: 2;
-        background-position: center top;
-      }
-      .panel-content {
-        min-height: auto;
-        padding: 40px 24px 36px;
         order: 1;
+        min-height: auto;
+        height: auto;
       }
-      h1 { font-size: 32px; }
-      .sub { font-size: 15px; }
+      .panel-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+      /* Form SECOND on mobile */
+      .panel-content {
+        order: 2;
+        min-height: auto;
+        padding: 40px 24px 52px;
+      }
+      h1 { font-size: 32px; max-width: 100%; }
+      .sub { font-size: 15px; max-width: 100%; }
+      form { max-width: 100%; }
+      .fine { max-width: 100%; }
     }
 
     @media (min-width: 721px) and (max-width: 1100px) {
-      .panel-content { padding: 60px 40px 60px 36px; }
+      .panel-content { padding: 60px 36px; }
       h1 { font-size: 40px; }
     }
   </style>
@@ -193,11 +205,11 @@
 <body>
 <div class="page">
 
-  <!-- RIGHT: Content -->
+  <!-- RIGHT: Content — centered -->
   <div class="panel-content">
     <p class="pre">חוברת מתכונים מתוקים בריאים במתנה:</p>
     <h1>בלי לספור קלוריות<br>ובלי רגשות אשם</h1>
-    <p class="sub">הורדי עכשיו את חוברת המתכונים המתוקים והבריאים של הדיאטנית הקלינית נטע ליבנה, שיעזרו לך לרדת במשקל בלי לוותר על הקפה של אחה&quot;צ.</p>
+    <p class="sub">בלי תפריטים קבועים ובלי חוקים נוקשים. פשוט מתכונים מתוקים ובריאים שיסגרו לך את הפינה של אחה&quot;צ ויעזרו לך לרדת במשקל.</p>
     <p class="form-lbl">הזיני פרטים ואשלח לך מיידית:</p>
     <form id="signup" action="RAVMESSER_ACTION_URL" method="post" onsubmit="return handleSubmit(event)">
       <input class="field" type="text" name="name" placeholder="השם שלך כאן" required>
@@ -211,8 +223,10 @@
     <p class="fine">ללא ספאם. ביטול בכל עת. הפרטים שלך בטוחים.</p>
   </div>
 
-  <!-- LEFT: Image -->
-  <div class="panel-image"></div>
+  <!-- LEFT: Image — not cropped -->
+  <div class="panel-image">
+    <img src="https://netacooks.co.il/wp-content/uploads/2026/06/mockup-hero.jpg" alt="חוברת מתכונים מתוקים">
+  </div>
 
 </div>
 <script>
@@ -225,7 +239,7 @@ function handleSubmit(e) {
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: 'name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email)
   }).then(function() {
-    document.getElementById('signup').innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:44px;margin-bottom:14px">🎉</div><div style="font-size:22px;font-weight:700;color:#A8294E;margin-bottom:10px;">נהדר! שלחתי לך את החוברת</div><div style="font-size:14px;color:#999;">בדקי את תיבת הדואר שלך ❤️</div></div>';
+    document.getElementById('signup').innerHTML = '<div style="text-align:center;padding:32px 0"><div style="font-size:44px;margin-bottom:14px">🎉</div><div style="font-size:22px;font-weight:700;color:#A8294E;margin-bottom:10px;">נהדר! שלחתי לך את החוברת</div><div style="font-size:14px;color:#999;">בדקי את תיבת הדואר שלך</div></div>';
   }).catch(function() {
     window.location.href = 'https://netacooks.co.il/%D7%90%D7%99%D7%96%D7%94-%D7%9B%D7%99%D7%A3-%D7%A9%D7%91%D7%97%D7%A8%D7%AA-%D7%9C%D7%94%D7%95%D7%A8%D7%99%D7%93-%D7%90%D7%AA-%D7%A7%D7%95%D7%91%D7%A5-%D7%94%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/';
   });
